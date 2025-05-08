@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="/css/regist.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to FastKitchen 🍴</h1>
+        <form id="registrationForm" novalidate >
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname">
+                <span class="error-message" id="fullnameError">Please enter a valid full name (letters and spaces
+                    only)</span>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <span class="error-message" id="usernameError">Username must be 3-20 characters (letters, numbers,
+                    _)</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="emailError">Please enter a valid email address</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <span class="error-message" id="passwordError">Must be 5+ chars with at least one letter (uppercase or
+                    lowercase) , at least one digit (0-9)</span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword">
+                <span class="error-message" id="confirmPasswordError">Passwords do not match</span>
+            </div>
+
+            <div class="terms">
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy
+                        Policy</a></label>
+                <span class="error-message" id="termsError">You must agree to the terms</span>
+            </div>
+
+            <button type="submit">Create Account</button>
+
+            <div class="login-link">
+                Already have an account? <a href="/Login.html">Login</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const messageDiv = document.querySelectorAll('.error-message');
+
+            // Validation patterns
+            const patterns = {
+                fullname: /^[a-zA-Z0-9\s]+$/,
+                username: /^[a-zA-Z0-9_]{3,20}$/,
+                email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                password: /^(?=.*[A-Za-z])(?=.*\d).{5,}$/
+            };
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const fullname = document.getElementById('fullname').value.trim();
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const termsChecked = document.getElementById('terms').checked;
+                
+                // Validate fields
+                let isValid = true;
+                
+                if (!patterns.fullname.test(fullname)) {
+                    //document.getElementById('usernameError').textContent = 'Please enter a valid full name';
+                    document.getElementById('fullnameError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (!patterns.username.test(username)) {
+                    document.getElementById('usernameError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (!patterns.email.test(email)) {
+                    document.getElementById('emailError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (!patterns.password.test(password)) {
+                    document.getElementById('passwordError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (password !== confirmPassword) {
+                    document.getElementById('confirmPasswordError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (!termsChecked) {
+                    document.getElementById('termsError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    showMessage('Please correct the errors in the form', 'error');
+                    return;
+                }
+                
+               // Check if username already exists in localStorage
+                if (localStorage.getItem('user_' + username)) {
+                    document.getElementById('usernameError').textContent = 'Username already exists';
+                    document.getElementById('usernameError').style.display = 'block';
+                    showMessage('Username already exists. Please choose another.', 'error');
+                    return;
+                }
+                
+                // Create user object
+                const user = {
+                    fullname: fullname,
+                    username: username,
+                    email: email,
+                    password: password, 
+                    registeredAt: new Date().toISOString()
+                };
+                
+                // Store in localStorage
+                localStorage.setItem('user_' + username, JSON.stringify(user));
+                alert("Registration successful! Redirecting to login...");
+                // Show success message
+                showMessage('Registration successful! Redirecting to login...', 'success');
+                
+            
+               
+                    window.location.href = './Login.html';
+                
+            });
+            
+            function showMessage(message, type) {
+                //messageDiv.textContent = message;
+              //  messageDiv.className = 'message ' + type;
+               // messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+
+
+</body>
+</html>

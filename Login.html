@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login </title>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1> Welcome to FastKitchen 🍴</h1>
+        <form id="loginForm" novalidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username">
+                <span class="error-message" id="usernameError">Please enter a valid username </span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+                <span class="error-message" id="passwordError">Please enter a valid Password</span>
+            </div>
+
+            <button type="submit">Login</button>
+
+            <div class="links">
+                <a href="#forgot">Forgot Password?</a>
+                <a href="/Registration.html">Create Account</a>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        const messageDiv = null;
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const loginForm = document.getElementById('loginForm');
+            const messageDiv = document.querySelectorAll('.error-message');
+
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+
+                // Get form values
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+
+                // Basic validation
+                let isValid = true;
+
+                if (username === '') {
+                    //document.getElementById('usernameError').style.display = 'block';
+                    document.getElementById('usernameError').textContent = 'Enter username ';
+                    document.getElementById('usernameError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (password === '') {
+                    document.getElementById('usernameError').textContent = 'Enter password ';
+                    document.getElementById('passwordError').style.display = 'block';
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    showMessage('Please fill in all fields', 'error');
+                    return;
+                }
+
+                // Check if user exists in localStorage
+                const userData = localStorage.getItem('user_' + username);
+
+                if (!userData) {
+                    showMessage('Username not found', 'error');
+                    alert("Username not found ");
+                    return;
+                }
+
+                // Parse user data
+                const user = JSON.parse(userData);
+
+                // Check password (in real app, compare hashed passwords)
+                if (user.password === password) {
+                    alert("Login successful!");
+                    showMessage('Login successful! Redirecting...', 'success');
+
+                    // Store logged in user in sessionStorage
+                    sessionStorage.setItem('loggedInUser', JSON.stringify({
+                        username: user.username,
+                        fullname: user.fullname,
+                        email: user.email
+                    }));
+
+
+                    window.location.href = 'home.html';
+
+                } else {
+                    alert("Incorrect password");
+                    showMessage('Incorrect password', 'error');
+                }
+            });
+
+            function showMessage(message, type) {
+
+                messageDiv.textContent = message;
+                messageDiv.className = 'message ' + type;
+                messageDiv.display = 'block';
+
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>

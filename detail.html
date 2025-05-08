@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>detail</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Lovers+Quarrel&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-transparent py-2 mx-2 fixed-top" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="home.html">
+        <img src="imgs/logo.jpg" alt="Logo" width="50" height="38" class="rounded d-inline-block align-text-top">
+        <span class="logoname">FastKitchen</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Centered items -->
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0"> <!-- mx-auto centers these items -->
+          <li class="nav-item me-5">
+            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+          </li>
+          <li class="nav-item me-5">
+            <a class="nav-link" href="#">Favourites</a>
+          </li>
+          <li class="nav-item me-5">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+
+        </ul>
+
+        <!-- Right-aligned dropdown -->
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-user"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end"> <!-- dropdown-menu-end aligns dropdown to right -->
+              <li><a class="dropdown-item" href="#">Log Out</a></li>
+              <li><a class="dropdown-item" href="#">Sign up</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="vh-100 d-flex justify-content-center align-items-center text-center mx-2"
+    style="background-image: url('imgs/background.jpg'); background-size: cover;  background-position: center center; background-repeat: no-repeat; background-attachment: fixed;">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 class="display-5">Details of the recipe</h1>
+  </header>
+
+  <!-- content -->
+
+  <div class="container py-5 mb-2">
+    <div class="card shadow-lg p-4 mx-2 border-secondary bg-light">
+      <div class="row g-4">
+        <div class="col-md-5 text-center">
+          <img id="recipe-image" alt="Recipe Image" class="img-fluid rounded shadow" style="max-height: 300px;">
+        </div>
+        <div class="col-md-7">
+          <h2 id="recipe-title" class="mb-3"></h2>
+          <div id="recipe-summary" class="text-muted mb-3"></div>
+        </div>
+      </div>
+
+      <hr class="my-4">
+
+      <!-- ingredients -->
+      <div class="accordion mt-4" id="recipeAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingIngredients">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseIngredients" aria-expanded="false" aria-controls="collapseIngredients">
+              Ingredients
+            </button>
+          </h2>
+          <div id="collapseIngredients" class="accordion-collapse collapse " aria-labelledby="headingIngredients"
+            data-bs-parent="#recipeAccordion">
+            <div class="accordion-body">
+              <ul id="ingredients-list" class="list-group list-group-flush"></ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingInstructions">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseInstructions" aria-expanded="false" aria-controls="collapseInstructions">
+              Instructions
+            </button>
+          </h2>
+          <div id="collapseInstructions" class="accordion-collapse collapse" aria-labelledby="headingInstructions"
+            data-bs-parent="#recipeAccordion">
+            <div class="accordion-body" id="recipe-instructions"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <a href="home.html" class="btn btn-secondary text-white"> Back to Home</a>
+      </div>
+    </div>
+  </div>
+  <footer id="foot" class="text-center text-lg-start text-light mt-5 mx-2 p-lg-4" style="
+    background-image: url('imgs/contact.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    ">
+    <div class="row">
+      <div class="col-md-3 col-sm-12 p-4">
+        <h5 class="text-uppercase mb-3">Contact Us</h5>
+        <div class="row my-2">
+          <div class="icon col-md-2 col-sm-4 d-flex justify-content-center align-items-center mt-2">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="col-md-10 col-sm-8 d-flex justify-content-center align-items-center ">
+            <p>street 123, Fayium city, Fayium, Egypt</p>
+          </div>
+        </div>
+        <div class="row my-2">
+          <div class="icon col-md-2 col-sm-4 d-flex justify-content-center align-items-center mt-2">
+            <i class="fa-solid fa-phone "></i>
+          </div>
+          <div class="col-md-10 col-sm-8 d-grid">
+            <small>+20 155-665-1256</small>
+            <small>+20 122-555-6574</small>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="icon col-md-2 col-sm-4 d-flex justify-content-center align-items-center mt-2">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+          <div class="col-md-10 col-sm-8 d-grid">
+            <small>abanoubzaki14@gmail.com</small>
+            <small>ae1829@fayoum.edu.eg</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12 p-4">
+        <h5 class="text-uppercase mb-3">OUR Links</h5>
+        <div class="row my-2">
+          <p>About Us</p>
+        </div>
+        <div class="row my-2">
+          <p>Faq</p>
+        </div>
+        <div class="row my-2">
+          <p>Team</p>
+        </div>
+        <div class="row my-2">
+          <p>Team Details</p>
+        </div>
+        <div class="row my-2">
+          <p>Testimanial</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12 p-4">
+        <h5 class="text-uppercase mb-3">OUR Servives</h5>
+        <div class="row my-2">
+          <p>Awesome Team</p>
+        </div>
+        <div class="row my-2">
+          <p>Table Services</p>
+        </div>
+        <div class="row my-2">
+          <p>Order Token</p>
+        </div>
+        <div class="row my-2">
+          <p>Quick response</p>
+        </div>
+        <div class="row my-2">
+          <p>Fresh healthy Food</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12 p-4">
+        <h5 class="text-uppercase mb-3">Help Center</h5>
+        <div class="row my-3">
+          <p>Service</p>
+        </div>
+        <div class="row my-2">
+          <p>Service Detail</p>
+        </div>
+        <div class="row my-2">
+          <p>Coming soon</p>
+        </div>
+        <div class="row my-2">
+          <p>Under Maintenance</p>
+        </div>
+        <div class="row my-2">
+          <p>Error 404</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-4" style="background-color: transparent">
+      © 2025 FastKitchen. All rights reserved.
+    </div>
+  </footer>
+
+
+
+  <script src="js/homescript.js"></script>
+  <script src="js/detail.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

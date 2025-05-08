@@ -1,4 +1,4 @@
-const API_KEY1 = "1ba52f8de94245caa2d3ff3fc4d68def";
+const API_KEY1 = "000cde4cbec3435b88e4913b6245d93e";
 const BASE_URL1 = "https://api.spoonacular.com/recipes";
 
 // get id from url
@@ -90,17 +90,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const recipe = await fetchRecipeDetails(id);
   if (recipe) {
-  displayRecipe(recipe);
-  const similar = await fetchSimilarRecipesWithDetails(id);
-  displaySimilarRecipes(similar);
-} else {
-  document.body.innerHTML = "<p>Failed to load recipe details.</p>";
-}
-function displaySimilarRecipes(recipes) {
-  const container = document.getElementById("similar-recipes");
-  if (!container) return;
+    displayRecipe(recipe);
+    const similar = await fetchSimilarRecipesWithDetails(id);
+    displaySimilarRecipes(similar);
+  } else {
+    document.body.innerHTML = "<p>Failed to load recipe details.</p>";
+  }
+  function displaySimilarRecipes(recipes) {
+    const container = document.getElementById("similar-recipes");
+    if (!container) return;
 
-  container.innerHTML = recipes.map(recipe => `
+    container.innerHTML = recipes.map(recipe => `
     <div class="col-md-3 mb-4">
       <div class="card h-100 shadow-sm">
         <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
@@ -111,6 +111,6 @@ function displaySimilarRecipes(recipes) {
       </div>
     </div>
   `).join("");
-}
+  }
 
 });

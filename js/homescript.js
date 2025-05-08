@@ -35,8 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var API_KEY = "1ba52f8de94245caa2d3ff3fc4d68def";
-//var API_KEY = "89186d9c8e714c84abe91786714a988a";
+var API_KEY = "000cde4cbec3435b88e4913b6245d93e";
 var BASE_URL = "https://api.spoonacular.com/recipes";
 window.allRecipes = [];
 function fetchRandomRecipes() {

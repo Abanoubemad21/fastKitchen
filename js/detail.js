@@ -1,4 +1,4 @@
-const API_KEY1 = "1ba52f8de94245caa2d3ff3fc4d68def";
+const API_KEY1 = "000cde4cbec3435b88e4913b6245d93e";
 const BASE_URL1 = "https://api.spoonacular.com/recipes";
 
 // get id from url

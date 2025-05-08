@@ -18,7 +18,7 @@ interface SearchResult {
   totalResults: number;
 }
 
-const API_KEY = "1ba52f8de94245caa2d3ff3fc4d68def";
+const API_KEY = "000cde4cbec3435b88e4913b6245d93e";
 const BASE_URL = "https://api.spoonacular.com/recipes";
 (window as any).allRecipes = [];
 

@@ -1,0 +1,20 @@
+{
+  "name": "recipe-app",
+  "version": "1.0.0",
+  "description": "Recipe application with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "build:watch": "node esbuild.config.js --watch",
+    "dev": "node esbuild.config.js --watch"
+  },
+  "dependencies": {
+    "esbuild": "^0.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
+  },
+  "keywords": ["recipe", "typescript", "esbuild"],
+  "author": "",
+  "license": "MIT"
+}
